@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import SearchBar from "material-ui-search-bar";
 import "./App.css";
-import "./prueba.scss";
+import "./App.scss";
 
 
 export default function MyComponent() {
@@ -15,9 +15,7 @@ export default function MyComponent() {
   const [items, setItems] = useState({ data: [] });
   const [searchTerm,setSearchTerm] =useState('')
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+ 
   useEffect(() => {
     fetch("https://api.twitch.tv/helix/games/top", {
       headers: {
@@ -31,9 +29,7 @@ export default function MyComponent() {
           setIsLoaded(true);
           setItems(result);
         },
-        // Nota: es importante manejar errores aquí y no en
-        // un bloque catch() para que no interceptemos errores
-        // de errores reales en los componentes.
+        
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -58,7 +54,7 @@ export default function MyComponent() {
          margin: '0 auto',
          maxWidth: 800
        }}
-       
+       className="Search"
      />
         <ul className='ContenedorList'>
           {items.data.filter((item)=>{
